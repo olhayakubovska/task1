@@ -26,10 +26,13 @@ yargs.command({
   describe: "Prints all list",
   async handler() {
     const notes = await getNotes();
-    const newNotes = notes.map(({ title, id }) => console.log(id, title));
-    return newNotes;
+    
+    notes.forEach(({ title, id }) => {
+      console.log(id, title);
+    });
   },
 });
+
 yargs.command({
   command: "remove",
   describe: "Remove note by id",
